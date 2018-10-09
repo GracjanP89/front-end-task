@@ -1,0 +1,16 @@
+body {
+  font-family: 'Lato', sans-serif;
+  background: #efefef;
+}
+
+.main-title span {
+  display: inline-block;
+  background: #fad948;
+  padding-left: 15px;
+  padding-top: 18px;
+}
+
+.dash-divider {
+  border-top: 1px dashed #cdcdcd;
+  margin: 40px 0;
+}
