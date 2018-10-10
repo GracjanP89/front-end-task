@@ -19,8 +19,6 @@ body {
   margin: 40px 0;
 }
 
-
-/* @media only screen and (max-width: 550px) { */
     aside {
       padding: 0 4%;
     }
@@ -152,4 +150,36 @@ right: 0;
       color: #ec301f;
       text-decoration: underline;
     }
-/* } */
+
+
+
+
+@media only screen and (min-width: 551px) and (max-width: 760px) {
+  .itemsContainer li {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    clear: none;
+    padding: 0 10%;
+    margin-top: 52px;
+  }
+
+  .itemsContainer li:before {
+    left: -10px;
+    top: -52px;
+  }
+
+  .itemsContainer li .imgWrap {
+    float: none;
+    width: 100%;
+  }
+  .itemsContainer li .descWrap {
+    float: none;
+    width: 100%;
+    position: static;
+    transform: initial
+  }
+  .itemsContainer li .descWrap .specification tr > td {
+    width: 50%;
+  }
+}
