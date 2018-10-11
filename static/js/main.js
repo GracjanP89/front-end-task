@@ -109,7 +109,7 @@ Product.prototype.sortProducts = function(typeSort){
         this.createItems(this.sortData(data));
         break;
     case "subname":
-        alert("3");
+        this.createItems(this.subName(data));
         break;
       }
 }
@@ -139,6 +139,24 @@ Product.prototype.sortData = function(data){
     if (data1 < data2)
       return -1;
     if (data1 > data2)
+      return 1;
+    return 0;
+  }
+  data.sort(compare);
+
+  return data;
+}
+
+Product.prototype.subName = function(data){
+  var data = data;
+
+  function compare(a,b) {
+    var a = a.author.split(" ");
+    var b = b.author.split(" ");
+
+    if (a[1] < b[1])
+      return -1;
+    if (a[1] > b[1])
       return 1;
     return 0;
   }

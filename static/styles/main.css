@@ -196,6 +196,11 @@ right: 0;
     box-sizing: border-box;
     margin-top: 0;
   }
+
+  .itemsContainer li {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
