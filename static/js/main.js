@@ -70,8 +70,7 @@ var data = [
 // -------------------------
 
 
-function Product(data) {
-  this.data = data;
+function Product() {
   this.sortOption = document.querySelectorAll(".sortChange-js");
   this.pageSortInput = document.querySelector("#pageSortInput");
   var me = this,
@@ -122,7 +121,7 @@ Product.prototype.createItems = function(data){
 Product.prototype.sortProducts = function(typeSort){
   switch (typeSort) {
     case "page":
-        data = this.sortPage(data)
+        data = this.sortPage(data);
         this.createItems(data);
         break;
     case "data":
@@ -137,7 +136,7 @@ Product.prototype.sortProducts = function(typeSort){
 }
 
 Product.prototype.sortPage = function(data){
-  var data = data;
+  var data = this.pageFilter(data);
   function compare(a,b) {
     if (a.pages < b.pages)
       return -1;
@@ -151,7 +150,7 @@ Product.prototype.sortPage = function(data){
 }
 
 Product.prototype.sortData = function(data){
-  var data = data;
+  var data = this.pageFilter(data);
   function compare(a,b) {
     var a = a.releaseDate.split("/");
     var b = b.releaseDate.split("/");
@@ -170,7 +169,7 @@ Product.prototype.sortData = function(data){
 }
 
 Product.prototype.subName = function(data){
-  var data = data;
+  var data = this.pageFilter(data);
 
   function compare(a,b) {
     var a = a.author.split(" ");
