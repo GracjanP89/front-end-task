@@ -73,13 +73,32 @@ var data = [
 function Product(data) {
   this.data = data;
   this.sortOption = document.querySelectorAll(".sortChange-js");
-  var me = this;
+  this.pageSortInput = document.querySelector("#pageSortInput");
+  var me = this,
+      timeout;
 
   this.sortOption.forEach(function(elem) {
     elem.addEventListener("click", function(e) {
         var sortType = String(e.target.dataset.sort);
         me.sortProducts(sortType);
     });
+  });
+
+
+  this.pageSortInput.addEventListener("keypress", function(e) {
+
+      var keycode = e.which;
+      if (!(e.shiftKey == false && (keycode == 46 || keycode == 8 || keycode == 37 || keycode == 39 || (keycode >= 48 && keycode <= 57)))) {
+      e.preventDefault();
+      }
+
+      if(timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+      }
+      timeout = setTimeout( function() {
+          me.createItems(me.pageFilter(data));
+      },  1000);
   });
 }
 
@@ -103,13 +122,16 @@ Product.prototype.createItems = function(data){
 Product.prototype.sortProducts = function(typeSort){
   switch (typeSort) {
     case "page":
-        this.createItems(this.sortPage(data));
+        data = this.sortPage(data)
+        this.createItems(data);
         break;
     case "data":
-        this.createItems(this.sortData(data));
+        data = this.sortData(data);
+        this.createItems(data);
         break;
     case "subname":
-        this.createItems(this.subName(data));
+        data = this.subName(data);
+        this.createItems(data);
         break;
       }
 }
@@ -163,6 +185,16 @@ Product.prototype.subName = function(data){
   data.sort(compare);
 
   return data;
+}
+
+Product.prototype.pageFilter = function(data){
+  var valuePagesLimit = Number(document.querySelector("#pageSortInput").value);
+  var filterData = data.filter(function(item){
+    if( item.pages > valuePagesLimit){
+      return item;
+    }
+  });
+  return filterData;
 }
 
 var products = new Product(data);

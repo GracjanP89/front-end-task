@@ -197,7 +197,7 @@ right: 0;
     margin-top: 0;
   }
 
-  .itemsContainer li {
+  .itemsContainer {
     display: flex;
     flex-wrap: wrap;
   }
