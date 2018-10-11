@@ -70,8 +70,17 @@ var data = [
 // -------------------------
 
 
-function Product(data){
+function Product(data) {
   this.data = data;
+  this.sortOption = document.querySelectorAll(".sortChange-js");
+  var me = this;
+
+  this.sortOption.forEach(function(elem) {
+    elem.addEventListener("click", function(e) {
+        var sortType = String(e.target.dataset.sort);
+        me.sortProducts(sortType);
+    });
+  });
 }
 
 Product.prototype.createItem = function(item){
@@ -79,17 +88,45 @@ Product.prototype.createItem = function(item){
   return  "<li>\n                  <div class=\"imgWrap\">\n                    <a href=\"" + item.cover.large + "\">\n                        <img src=\"" + item.cover.small + "\">\n                    </a>\n                  </div>\n                  <div class=\"descWrap\">\n                    <h2>" + item.title + "</h2>\n                    <span class=\"line-divider\"></span>\n                    <span class=\"author-txt\">" + item.author + "</span>\n                    <table class=\"specification\">\n                      <tbody><tr>\n                        <td>Release Date</td>\n                        <td>" + item.releaseDate + "</td>\n                      </tr>\n                      <tr>\n                        <td>Pages</td>\n                        <td>" + item.pages + "</td>\n                      </tr>\n                      <tr>\n                        <td>Link</td>\n                        <td class=\"link-shop\"><a href=\"" + item.link + "\">shop</a></td>\n                      </tr>\n                    </tbody></table>\n                  </div>\n                  <div class=\"clearfix\"></div>\n                </li>";
 }
 
-Product.prototype.createItems = function(){
+Product.prototype.createItems = function(data){
   var html = '',
       containerSelector = 'itemsContainer';
 
-  for (var item in this.data) {
-      html += this.createItem(this.data[item]);
+  for (var item in data) {
+      html += this.createItem(data[item]);
   }
 
   document.getElementById(containerSelector).innerHTML = html;
 
 }
 
+Product.prototype.sortProducts = function(typeSort){
+  switch (typeSort) {
+    case "page":
+        console.log(this.sortPage(data));
+        break;
+    case "data":
+        alert("2");
+        break;
+    case "subname":
+        alert("3");
+        break;
+      }
+}
+
+Product.prototype.sortPage = function(data){
+  var data = data;
+  function compare(a,b) {
+    if (a.pages < b.pages)
+      return -1;
+    if (a.pages > b.pages)
+      return 1;
+    return 0;
+  }
+  data.sort(compare);
+
+  return data;
+}
+
 var products = new Product(data);
-    products.createItems();
+    products.createItems(data);
