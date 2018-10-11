@@ -103,10 +103,10 @@ Product.prototype.createItems = function(data){
 Product.prototype.sortProducts = function(typeSort){
   switch (typeSort) {
     case "page":
-        console.log(this.sortPage(data));
+        this.createItems(this.sortPage(data));
         break;
     case "data":
-        alert("2");
+        this.createItems(this.sortData(data));
         break;
     case "subname":
         alert("3");
@@ -120,6 +120,25 @@ Product.prototype.sortPage = function(data){
     if (a.pages < b.pages)
       return -1;
     if (a.pages > b.pages)
+      return 1;
+    return 0;
+  }
+  data.sort(compare);
+
+  return data;
+}
+
+Product.prototype.sortData = function(data){
+  var data = data;
+  function compare(a,b) {
+    var a = a.releaseDate.split("/");
+    var b = b.releaseDate.split("/");
+    var data1 = Number(new Date(a[1],a[0]));
+    var data2 = Number(new Date(b[1],b[0]));
+
+    if (data1 < data2)
+      return -1;
+    if (data1 > data2)
       return 1;
     return 0;
   }
