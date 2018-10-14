@@ -7,6 +7,9 @@ function Product() {
   this.clearBtnSelector = document.querySelector("#clearResult");
   this.itemView = document.querySelector("#itemsContainer");
   this.body = document.querySelector("body");
+  this.overlaySelector = document.querySelector("#overlay");
+  this.closeBtnSelector = document.querySelector("#close-icon");
+  this.largeImgSelector = document.querySelector("#largeImg");
   var me = this,
       timeout;
 
@@ -51,12 +54,28 @@ function Product() {
       me.itemView.innerHTML = "";
   });
 
+  document.addEventListener('click',function(e){
+    if(e.target && e.target.className == 'imgLarge'){
+        var imgLink = e.target.getAttribute('data-large');
+        me.showOverlay(imgLink);
+      }
+    });
 
+    this.closeBtnSelector.addEventListener('click',function(e){
+      me.overlaySelector.style.display = "none";
+      me.largeImgSelector.setAttribute("src", "");
+    });
+
+}
+
+Product.prototype.showOverlay = function(linkImg){
+    this.largeImgSelector.setAttribute("src", linkImg);
+    this.overlaySelector.style.display = "block";
 }
 
 Product.prototype.createItem = function(item){
   var item = item;
-  return  "<li>\n                  <div class=\"imgWrap\">\n                    <a href=\"" + item.cover.large + "\">\n                        <img src=\"" + item.cover.small + "\">\n                    </a>\n                  </div>\n                  <div class=\"descWrap\">\n                    <h2>" + item.title + "</h2>\n                    <span class=\"line-divider\"></span>\n                    <span class=\"author-txt\">" + item.author + "</span>\n                    <table class=\"specification\">\n                      <tbody><tr>\n                        <td>Release Date</td>\n                        <td>" + item.releaseDate + "</td>\n                      </tr>\n                      <tr>\n                        <td>Pages</td>\n                        <td>" + item.pages + "</td>\n                      </tr>\n                      <tr>\n                        <td>Link</td>\n                        <td class=\"link-shop\"><a href=\"" + item.link + "\">shop</a></td>\n                      </tr>\n                    </tbody></table>\n                  </div>\n                  <div class=\"clearfix\"></div>\n                </li>";
+  return  "<li>\n                  <div class=\"imgWrap\">\n                    <a>\n                        <img class='imgLarge' data-large=\"" + item.cover.large + "\" src=\"" + item.cover.small + "\">\n                    </a>\n                  </div>\n                  <div class=\"descWrap\">\n                    <h2>" + item.title + "</h2>\n                    <span class=\"line-divider\"></span>\n                    <span class=\"author-txt\">" + item.author + "</span>\n                    <table class=\"specification\">\n                      <tbody><tr>\n                        <td>Release Date</td>\n                        <td>" + item.releaseDate + "</td>\n                      </tr>\n                      <tr>\n                        <td>Pages</td>\n                        <td>" + item.pages + "</td>\n                      </tr>\n                      <tr>\n                        <td>Link</td>\n                        <td class=\"link-shop\"><a href=\"" + item.link + "\">shop</a></td>\n                      </tr>\n                    </tbody></table>\n                  </div>\n                  <div class=\"clearfix\"></div>\n                </li>";
 }
 
 Product.prototype.createItems = function(data){
