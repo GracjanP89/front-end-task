@@ -3,3 +3,6 @@ Do przechowywania danych między przeładowaniami stron wykorzystałem technolog
 
 Jeśli chodzi o kompatybilność wsteczną projektu ( projekt jest tworzony bez użycia żadnych bibliotek czy frameworków typu jQuery,Angulat etc.),
 wsparcie przeglądarek, IE8+ , pozostałe główne przeglądarki ( Opera, Firefox , Chrome ) , w 100% wspierają wykorzystane rozwiązania. ('Jeśli chodzi o Safari z racji nie posiadania odpowiedniego sprzętu , testy były utrudnione').
+
+Do testów funkcjonalności sortowania i filtrowania użyłem narzędzia Jasmine
+komenda startująca testy : npm test
