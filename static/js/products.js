@@ -1,7 +1,7 @@
 // -------------------------
 
 
-function Product() {
+function Products() {
   this.sortOption = document.querySelectorAll(".sortChange-js");
   this.pageSortInput = document.querySelector("#pageSortInput");
   this.clearBtnSelector = document.querySelector("#clearResult");
@@ -24,8 +24,7 @@ function Product() {
   });
 
 
-      this.pageSortInput.addEventListener("keydown", function(e) {
-
+  this.pageSortInput.addEventListener("keydown", function(e) {
       var keycode = e.which || e.keyCode;
       if (!(e.shiftKey == false && (keycode == 46 || keycode == 8 || keycode == 37 || keycode == 39 || (keycode >= 48 && keycode <= 57)))) {
       e.preventDefault();
@@ -68,7 +67,10 @@ function Product() {
 
 }
 
-Product.prototype.cleanSort = function(){
+
+//////////// object method
+
+Products.prototype.cleanSort = function(){
 
   this.pageSortInput.value = 0;
   if(window.localStorage) {
@@ -86,17 +88,18 @@ Product.prototype.cleanSort = function(){
   this.createItems(notEditableData);
 }
 
-Product.prototype.showOverlay = function(linkImg){
+Products.prototype.showOverlay = function(linkImg){
     this.largeImgSelector.setAttribute("src", linkImg);
     this.overlaySelector.style.display = "block";
 }
 
-Product.prototype.createItem = function(item){
+// creating html item
+Products.prototype.createItem = function(item){
   var item = item;
-  return  "<li>\n                  <div class=\"imgWrap\">\n                    <a>\n                        <img class='imgLarge' data-large=\"" + item.cover.large + "\" src=\"" + item.cover.small + "\">\n                    </a>\n                  </div>\n                  <div class=\"descWrap\">\n                    <h2>" + item.title + "</h2>\n                    <span class=\"line-divider\"></span>\n                    <span class=\"author-txt\">" + item.author + "</span>\n                    <table class=\"specification\">\n                      <tbody><tr>\n                        <td>Release Date</td>\n                        <td>" + item.releaseDate + "</td>\n                      </tr>\n                      <tr>\n                        <td>Pages</td>\n                        <td>" + item.pages + "</td>\n                      </tr>\n                      <tr>\n                        <td>Link</td>\n                        <td class=\"link-shop\"><a href=\"" + item.link + "\">shop</a></td>\n                      </tr>\n                    </tbody></table>\n                  </div>\n                  <div class=\"clearfix\"></div>\n                </li>";
+  return  "<li>\n<div class=\"imgWrap\">\n<a>\n<img class='imgLarge' data-large=\"" + item.cover.large + "\" src=\"" + item.cover.small + "\">\n</a>\n</div>\n<div class=\"descWrap\">\n<h2>" + item.title + "</h2>\n                    <span class=\"line-divider\"></span>\n                    <span class=\"author-txt\">" + item.author + "</span>\n                    <table class=\"specification\">\n                      <tbody><tr>\n                        <td>Release Date</td>\n                        <td>" + item.releaseDate + "</td>\n                      </tr>\n                      <tr>\n                        <td>Pages</td>\n                        <td>" + item.pages + "</td>\n                      </tr>\n                      <tr>\n                        <td>Link</td>\n                        <td class=\"link-shop\"><a href=\"" + item.link + "\">shop</a></td>\n                      </tr>\n                    </tbody></table>\n                  </div>\n<div class=\"clearfix\"></div>\n                </li>";
 }
 
-Product.prototype.createItems = function(data){
+Products.prototype.createItems = function(data){
   var html = '',
       containerSelector = 'itemsContainer';
 
@@ -108,7 +111,7 @@ Product.prototype.createItems = function(data){
 
 }
 
-Product.prototype.sortProducts = function(typeSort){
+Products.prototype.sortProducts = function(typeSort){
   switch (typeSort) {
     case "page":
         data = this.sortPage(data);
@@ -128,7 +131,7 @@ Product.prototype.sortProducts = function(typeSort){
       }
 }
 
-Product.prototype.sortPage = function(data){
+Products.prototype.sortPage = function(data){
   var dataFilter = this.pageFilter(data);
   function compare(a,b) {
     if (a.pages < b.pages)
@@ -142,7 +145,7 @@ Product.prototype.sortPage = function(data){
   return data;
 }
 
-Product.prototype.sortData = function(data){
+Products.prototype.sortData = function(data){
   var dataFilter = this.pageFilter(data);
   function compare(a,b) {
     var a = a.releaseDate.split("/");
@@ -161,7 +164,7 @@ Product.prototype.sortData = function(data){
   return data;
 }
 
-Product.prototype.subName = function(data){
+Products.prototype.subName = function(data){
   var dataFilter = this.pageFilter(data);
 
   function compare(a,b) {
@@ -179,7 +182,7 @@ Product.prototype.subName = function(data){
   return data;
 }
 
-Product.prototype.pageFilter = function(data){
+Products.prototype.pageFilter = function(data){
   var valuePagesLimit = Number(document.querySelector("#pageSortInput").value);
   var filterData = data.filter(function(item){
     if( item.pages > valuePagesLimit){
@@ -194,7 +197,7 @@ Product.prototype.pageFilter = function(data){
   return filterData;
 }
 
-Product.prototype.localcheckedSortType = function(sortType){
+Products.prototype.localcheckedSortType = function(sortType){
   this.sortOption.forEach(function(elem) {
     if(elem.getAttribute('data-sort') == sortType){
       elem.setAttribute("checked", "checked");
@@ -202,7 +205,12 @@ Product.prototype.localcheckedSortType = function(sortType){
   });
 }
 
-var products = new Product(data);
+
+/////////////////////////////////////////////////////////////////////
+
+var products = new Products(); //  --------------------------- init App
+
+// checking old data from localStorage , display as init values if exist
     if(!(localStorage.pageFilter) && !(localStorage.sortType)){
       products.createItems(notEditableData);
     } else {
