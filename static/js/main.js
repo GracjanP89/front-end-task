@@ -4,20 +4,26 @@
 function Product() {
   this.sortOption = document.querySelectorAll(".sortChange-js");
   this.pageSortInput = document.querySelector("#pageSortInput");
+  this.clearBtnSelector = document.querySelector("#clearResult");
+  this.itemView = document.querySelector("#itemsContainer");
+  this.body = document.querySelector("body");
   var me = this,
       timeout;
 
   this.sortOption.forEach(function(elem) {
     elem.addEventListener("click", function(e) {
         var sortType = String(e.target.dataset.sort);
+        if(window.localStorage) {
+            localStorage.sortType = sortType;
+          }
         me.sortProducts(sortType);
     });
   });
 
 
-  this.pageSortInput.addEventListener("keypress", function(e) {
+      this.pageSortInput.addEventListener("keydown", function(e) {
 
-      var keycode = e.which;
+      var keycode = e.which || e.keyCode;
       if (!(e.shiftKey == false && (keycode == 46 || keycode == 8 || keycode == 37 || keycode == 39 || (keycode >= 48 && keycode <= 57)))) {
       e.preventDefault();
       }
@@ -30,6 +36,22 @@ function Product() {
           me.createItems(me.pageFilter(data));
       },  1000);
   });
+
+  this.body.addEventListener ("keydown", function (e) {
+    var keycode = e.which || e.keyCode;
+
+    if (e.altKey && keycode == 114) {
+      me.itemView.innerHTML = "";
+    }
+    return false;
+  });
+
+
+  this.clearBtnSelector.addEventListener("click", function() {
+      me.itemView.innerHTML = "";
+  });
+
+
 }
 
 Product.prototype.createItem = function(item){
@@ -127,8 +149,33 @@ Product.prototype.pageFilter = function(data){
       return item;
     }
   });
+
+  if(window.localStorage) {
+      localStorage.pageFilter = String(valuePagesLimit);
+  }
+
   return filterData;
 }
 
+Product.prototype.localcheckedSortType = function(sortType){
+  this.sortOption.forEach(function(elem) {
+    if(elem.getAttribute('data-sort') == sortType){
+      elem.setAttribute("checked", "checked");
+    }
+  });
+}
+
 var products = new Product(data);
-    products.createItems(data);
+    if(!(localStorage.pageFilter) && !(localStorage.sortType)){
+      products.createItems(data);
+    } else {
+      if(localStorage.sortType){
+        if(localStorage.pageFilter){
+          var localPageFilter = localStorage.getItem('pageFilter');
+          this.pageSortInput.value = localPageFilter;
+        }
+        var localSortType = localStorage.getItem('sortType');
+        products.sortProducts(localSortType);
+        products.localcheckedSortType(localSortType);
+      }
+    }
