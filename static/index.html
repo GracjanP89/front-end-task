@@ -2,93 +2,53 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Książki o Javascript</title>
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link rel="stylesheet" href="/styles/main.css">
     </head>
     <body>
-        <h1>JS’owe książki</h1>
+        <h1 class="main-title"><span>JS</span>’owe książki</h1>
+
+<div class="dash-divider">
+</div>
+
+<aside>
+    <div class="sortsWrap">
+      <h2>Sortuj po</h2>
+      <ul>
+          <li><input class="sortChange-js" data-sort="page" name="sort" type="radio"> ilości stron</li>
+          <li><input class="sortChange-js" data-sort="data" name="sort" type="radio"> dacie wydania</li>
+          <li><input class="sortChange-js" data-sort="subname" name="sort" type="radio"> nazwisku autora</li>
+      </ul>
+    </div>
+    <div class="pageSortWrap">
+      <h2>Pokaż tylko</h2>
+      <ul>
+          <li>Powyżej <input id="pageSortInput" class="pageSort" type="text"> stron</li>
+      </ul>
+    </div>
+    <div class="clearWrap">
+      <button id="clearResult">Wyczyść</button>
+    </div>
+</aside>
 
         <main>
-            <ol>
-                <li>
-                    <a href="https://covers.oreillystatic.com/images/9780596517748/lrg.jpg">
-                        <img src="https://covers.oreillystatic.com/images/9780596517748/cat.gif">
-                    </a>
-                    JavaScript: The Good Parts
-                    By Douglas Crockford
-                    Release Date: 12/2008
-                    Pages: 172
-                    Link: http://shop.oreilly.com/product/9780596517748.do
-                </li>
-                <li>
-                    <a href="https://covers.oreillystatic.com/images/9780596000486/lrg.jpg">
-                        <img src="https://covers.oreillystatic.com/images/9780596000486/cat.gif">
-                    </a>
-                    JavaScript: The Definitive Guide
-                    By David Flanagan
-                    Release Date: 11/2001
-                    Pages: 936
-                    Link: http://shop.oreilly.com/product/9780596000486.do
-                </li>
-                <li>
-                    <a href="https://covers.oreillystatic.com/images/0636920025832/lrg.jpg">
-                        <img src="https://covers.oreillystatic.com/images/0636920025832/cat.gif">
-                    </a>
-                    Learning JavaScript Design Patterns
-                    By Addy Osmani
-                    Release Date: 08/2012
-                    Pages: 254
-                    Link: http://shop.oreilly.com/product/0636920025832.do
-                </li>
-
-                <li>
-                    <a href="https://covers.oreillystatic.com/images/0636920027713/lrg.jpg">
-                        <img src="https://covers.oreillystatic.com/images/0636920027713/cat.gif">
-                    </a>
-                    JavaScript Enlightenment
-                    By Cody Lindley
-                    Release Date: 12/2012
-                    Pages: 166
-                    Link: http://shop.oreilly.com/product/0636920027713.do
-                </li>
-                <li>
-                    <a href="https://covers.oreillystatic.com/images/0636920033141/lrg.jpg">
-                        <img src="https://covers.oreillystatic.com/images/0636920033141/cat.gif">
-                    </a>
-                    Programming JavaScript Applications
-                    By Eric Elliott
-                    Release Date: 07/2014
-                    Pages: 254
-                    Link: http://shop.oreilly.com/product/0636920033141.do
-                </li>
-                <li>
-                    <a href="https://covers.oreillystatic.com/images/0636920047124/lrg.jpg">
-                        <img src="https://covers.oreillystatic.com/images/0636920047124/cat.gif">
-                    </a>
-                    Practical Modern JavaScript
-                    By Nicolas Bevacqua
-                    Release Date: 07/2017
-                    Pages: 334
-                    Link: http://shop.oreilly.com/product/0636920047124.do
-                </li>
+            <ol id="itemsContainer" class="itemsContainer">
             </ol>
         </main>
 
-        <aside>
-            <h2>Sortuj po</h2>
-            <ul>
-                <li><input name="sort" type="radio"> ilości stron</li>
-                <li><input name="sort" type="radio"> dacie wydania</li>
-                <li><input name="sort" type="radio"> nazwisku autora</li>
-            </ul>
-            <h2>Pokaż tylko</h2>
-            <ul>
-                <li>Powyżej <input type="text"> stron</li>
-            </ul>
-            <button>Wyczyść</button>
-        </aside>
-
         <footer>
-
         </footer>
+        <div id="overlay" class="overlay">
+          <div class="overlayContent">
+            <div class="wrapLargeImg">
+              <img id="close-icon" class="close-icon" src="https://cdn.pbrd.co/images/HIqSHL5.png" alt="">
+              <img id="largeImg" src="">
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="js/data.js"></script>
+        <script type="text/javascript" src="js/products.js"></script>
     </body>
 </html>
