@@ -1,90 +1,45 @@
-# Front-endowe zadanie: "książki o javascript"
+**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
 
+When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
 
-## Treść zadania
+*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
 
-1.  Zmień strukturę HTML pliku `static/index.html` oraz napisz odpowiednie reguły CSS, tak 
-    aby jak najdokładniej odwzorować wygląd przedstawiony na makietach (patrz katalog
-    `screenshots/`).
-    
-2.  Dodaj do strony zachowania:
-    
-    1.  Kliknięcie na obraz okładki, powinno powodować pokazanie większego obrazka
-        okładki. Obraz ten powinien być na pierwszym planie, to co jest pod spodem
-        powinno zostać przesłonięte półprzezroczystym wypełnieniem (patrz przykład: 
-        `screenshots/popup.png`).
-    
-    2.  Zaznaczenie opcji sortowania, powinno zmienić kolejność elementów zgodnie z 
-        opisem danej opcji. Nie ma znaczenia czy sortowanie będzie w porządku rosnącym
-        czy malejącym.
-        
-    3.  Wpisanie wartości do filtra, powinno pozostawić widoczne jedynie książki
-        spełniające warunek.
-        
-    4.  Sotrowanie i filtry powinny zostać wyczyszczone po naciśnięciu przycisku
-        `wyczyść`. Takie samo zachowanie jest spodziewane po naciśnięciu skrótu
-        klawiszowego `[alt] + [r]`
-        
-    4.  Zaznaczone opcje (sortowanie / filtrowanie) powinny być zachowywane pomiędzy
-        odświeżeniami strony. Tj. wybranie sortowania, a potem przeładowanie strony
-        powinno skutkować pokazaniem elementów z uwzględnieniem wybranego wcześniej 
-        sortowania.
+---
 
-3.  Uzupełnij plik `notes.md`, wpisując tam swoje uwagi/komentarze, tak 
-    do zadania, jak i do swojego rozwiązania (np. w jakich przeglądarkach na 100%
-    działa, jakie założenia / uproszczenia zostały przyjęte itp.)
-    
-4.  Przetestuj jednostkowo funkcje związane z sortowaniem/filtrowaniem książek. Inne testy są mile widziane.
+## Edit a file
 
+You’ll start by editing this README file to learn how to edit a file in Bitbucket.
 
-## Uwagi
+1. Click **Source** on the left side.
+2. Click the README.md link from the list of files.
+3. Click the **Edit** button.
+4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
+5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
+6. Go back to the **Source** page.
 
-*   Jeśli chcesz to możesz całkowicie przebudować zastany kod / strukturę projektu,
-    dodać etap budowania, testów itp.
+---
 
-*   W repozytorium znajduje się plik `/books.json` zawierający te same dane, które
-    zostały wpisane w HTML. Możesz go wykorzystać.
-    
-*   Nie korzystaj z frameworków (Angular/React/Redux/Vue itp.). Chcemy zobaczyć jak
-    radzisz sobie z czystym Javascript'em i czy sam potrafisz zaprojektować strukturę
-    aplikacji.
-    
-*   Odradzamy korzystanie z frameworków CSS. Także tu zależy nam tym, żeby zobaczyć 
-    Twój kod.
+## Create a file
 
-*   Odwzorowanie layoutów nie musi być "pixel-perfect".
+Next, you’ll add a new file to this repository.
 
-*   Głównie zależy nam na dwóch rzeczach: jakości kodu (html/css/js) i końcowym 
-    _look-and-feel_.
+1. Click the **New file** button at the top of the **Source** page.
+2. Give the file a filename of **contributors.txt**.
+3. Enter your name in the empty file space.
+4. Click **Commit** and then **Commit** again in the dialog.
+5. Go back to the **Source** page.
 
-*   Użyty font to `Lato`.
+Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
 
+---
 
-## Uruchamianie
+## Clone a repository
 
-Wymaganiem jest node.js w wersji 8+.
+Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
 
+1. You’ll see the clone button under the **Source** heading. Click that button.
+2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
+3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
+4. Open the directory you just created to see your repository’s files.
 
-```bash
-$ npm install
-$ npm start
-```
-
-W konsoli pojawi się komunikat wskazujący pod jakim adresem nasłuchuje serwer.
-
-
-## Wysłanie rozwiązania
-
-*   Stwórz prywatne repozytorium na [bitbucket.org](https://bitbucket.org)
-    
-*   W branchu _master_ umieść niezmienioną zawartość tego zadania, a swoją pracę
-    w dowolnym innym branchu.
-    
-*   Otwórz pull-request z brancha z rozwiązaniem do brancha master. Będziemy go 
-    oglądać i komentować.
-
-*   Dodaj prawo odczytu do swojego repozytorium użytkownikowi `allegrotech` i dodaj
-    go jako review'era pull-request'a.
-    
-
-Wykonaj zadanie najlepiej jak potrafisz. Ważniejsza jest dla nas jakość kodu niż szybkie odesłanie rozwiązania.
+Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
