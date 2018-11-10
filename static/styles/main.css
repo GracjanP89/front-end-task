@@ -258,7 +258,6 @@ right: 0;
   }
   .itemsContainer li {
     width: 33%;
-    max-width: 302px;
     padding: 0 6%;
   }
   .sortsWrap li {
